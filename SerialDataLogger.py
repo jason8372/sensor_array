@@ -36,10 +36,10 @@ class SensorClassifier(Node):
         self.curr_time = time.time()
         self.time = 0
         # Publishers
-        self.marker_pub = self.create_publisher(Marker, '/visualization_marker', 10)
+        self.marker_pub = self.create_publisher(Marker, '/sensor/visualization', 10)
         self.sensor_pub = self.create_publisher(Float32MultiArray, '/sensor/sensor_data', 10)
         self.classification_pub = self.create_publisher(Int32, '/sensor/classification_result', qos_profile=qos_profile)
-        self.point_pub = self.create_publisher(PoseStamped, '/sensor/vis', 10)
+        self.point_pub = self.create_publisher(PoseStamped, '/sensor/x', 10)
 
         # Subscriber for pose
         self.pose_sub = self.create_subscription(PoseStamped, '/mavros/local_position/pose', self.pose_callback,  qos_profile=qos_profile)
